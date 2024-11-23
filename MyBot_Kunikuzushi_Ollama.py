@@ -29,7 +29,7 @@ def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/complet
     curl.setopt(curl.URL, url)
     curl.setopt(curl.HTTPHEADER, [
         # f"Authorization: Bearer {api_key}",
-        f"Authorization: Bearer sk-c71ec38edb844c1c84522b3101b4dd01",
+        f"Authorization: Bearer xxxxxxxxxxxxxxxxxxxxx",
         "Content-Type: application/json"
     ])
     curl.setopt(curl.POST, 1)
@@ -58,7 +58,7 @@ def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/complet
 
 # 单独测试ai
 if __name__ == "__main__":
-    api_key = "sk-c71ec38edb844c1c84522b3101b4dd01"  # 替换为实际 API 密钥
+    api_key = "xxxxxxxxxxxxxxxxxxx"  # 替换为实际 API 密钥
     user_input = "你多少岁了"
     response = input_User_Text(user_input, api_key)
     print("AI 回复:", response)
