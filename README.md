@@ -1,7 +1,4 @@
 <div align="center">
-
-  <img src="https://postimg.cc/ftKGjGYq" alt="QQ机器人连接Ollama本地大模型适配器">
-
   <a href="你的项目语言链接">
     <img src="https://img.shields.io/badge/language-python-green.svg?style=plastic" alt="项目语言">
   </a>
@@ -34,7 +31,15 @@ appid: "xxxx"
 secret: "xxxx"
 ```
 ## 修改模型配置
-找到MyBot_Liang_Ollama.py文件，修改以下部分：
+
+
+找到MyBot_Kunikuzushi_Ollama.py文件，修改以下部分：
+
+找到这行代码，修改里面的url为你的openwebui的链接，一般来说不用改
+``` python
+def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/completions"):
+```
+
 ``` python
 # 构建 API 请求数据
 data = {
