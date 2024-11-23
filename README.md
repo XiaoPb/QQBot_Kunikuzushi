@@ -5,8 +5,8 @@
   <img src="https://img.shields.io/badge/python-312-blue" alt="Python版本">
 
 
-  <p>✨ 你的项目描述 ✨</p>
-  一个普通的项目
+  <p>✨ 一个普通的项目 ✨</p>
+
 
   <a href="你的文档链接">文档</a>
   ·
