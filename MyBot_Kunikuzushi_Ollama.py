@@ -1,11 +1,11 @@
 import json
 from io import BytesIO
-
+import re
 import pycurl
 
 from MyBot_load_character_building_message import build_character_message, load_character
 
-def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/completions"):
+def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/completions", model_name="llama3.1:latest", api_key="xxxxx"):
 
     # 读取角色信息
     character, personality = load_character()
@@ -13,12 +13,13 @@ def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/complet
 
     # 构建 API 请求数据
     data = {
-        "model": "llama3.1:latest",
+        "model": model_name,
         "messages": [
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_input_text}
         ]
     }
+    print(user_input_text)
 
     # 转换为 JSON 格式
     json_data = json.dumps(data)
@@ -29,7 +30,7 @@ def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/complet
     curl.setopt(curl.URL, url)
     curl.setopt(curl.HTTPHEADER, [
         # f"Authorization: Bearer {api_key}",
-        f"Authorization: Bearer xxxxxxxxxxxxxxxxxxxxx",
+        f"Authorization: Bearer {api_key}",
         "Content-Type: application/json"
     ])
     curl.setopt(curl.POST, 1)
@@ -50,6 +51,7 @@ def input_User_Text(user_input_text, url="http://localhost:3000/api/chat/complet
     try:
         response_dict = json.loads(response)
         answer_content = response_dict['choices'][0]['message']['content']
+        answer_content = re.sub(r'<think>.*?</think>\s*', '', answer_content, count=1, flags=re.DOTALL)
         return answer_content
         # return response_dict
     except (KeyError, TypeError, json.JSONDecodeError) as e:

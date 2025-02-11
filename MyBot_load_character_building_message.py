@@ -1,7 +1,7 @@
 import yaml
 
 # 读取 YAML 文件
-def load_character(file_path="ai_character.yaml"):
+def load_character(file_path="./app/ai_character.yaml"):
     """
         从 YAML 文件加载角色和性格数据。
         :param file_path: YAML 文件路径

@@ -4,9 +4,9 @@ from botpy import logging
 from botpy.ext.cog_yaml import read
 from botpy.message import Message, GroupMessage, C2CMessage
 from MyBot_fix_Extend import fix_json_string
-from MyBot_Liang_Ollama import input_User_Text
+from MyBot_Kunikuzushi_Ollama import input_User_Text
 
-test_config = read(os.path.join(os.path.dirname(__file__), "config.yaml"))
+test_config = read(os.path.join(os.path.dirname(__file__), "./app/config.yaml"))
 _log = logging.get_logger()
 
 async def replay_message(ai_message, use_raw_message, message_type='group'):
@@ -30,7 +30,7 @@ async def replay_message(ai_message, use_raw_message, message_type='group'):
     _log.info(f"Kunikuzushi：{ai_message}")
 
 async def replay_content(use_input_message, message_type='group'):
-    get_ollama_text = input_User_Text(use_input_message.content)
+    get_ollama_text = input_User_Text(use_input_message.content, url=test_config["open_webui_url"], model_name=test_config["model_name"], api_key=test_config["api_key"])
     await replay_message(get_ollama_text, use_input_message, message_type)
 
 class MyClient(botpy.Client):

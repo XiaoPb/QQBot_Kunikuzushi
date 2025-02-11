@@ -1,0 +1,5 @@
+appid: "xxxxxxxxx"
+secret: "xxxxxxxxxxxxxxxx"
+open_webui_url: "http://127.0.0.1:3000/api/chat/completions"
+model_name: "deepseek-r1:14b"
+api_key: "sk-xxxxxxxxxx"
